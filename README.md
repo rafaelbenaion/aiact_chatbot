@@ -128,6 +128,7 @@ curl -X 'POST' \
 2. Aller dans la section "Run and Debug" (Ctrl + Shift + D)
 3. Sélectionner la configuration "Python: FastAPI"
 4. Appuyer sur F5 ou cliquer sur le bouton Play
+5. Démarrer Swagger : http://127.0.0.1:8000/docs
 
 ## Structure de l'API
 

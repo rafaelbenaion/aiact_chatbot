@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.models.chat import ChatRequest, ChatRequestWithContext, ChatResponse
-from app.services.llm_service import LLMService
+from models.chat import ChatRequest, ChatRequestWithContext, ChatResponse
+from services.llm_service import LLMService
 
 
 router = APIRouter()
