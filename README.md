@@ -174,6 +174,9 @@ curl -X 'POST' \
    - Vérifier le format du contexte
    - S'assurer que les rôles sont valides
 
+4. **Powershell**
+   - Si les droits admin ne sont pas présent : ''Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force''
+
 ## Ressources
 
 - [Documentation FastAPI](https://fastapi.tiangolo.com/)
