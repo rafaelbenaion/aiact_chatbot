@@ -42,18 +42,14 @@ This endpoint accepts project descriptions and provides detailed guidance on com
 app/
 ├── api/                    # Gestion des routes et endpoints de l'API
 │   ├── endpoints/          # Endpoints spécifiques par fonctionnalité
-│   │   ├── __pycache__/    # Cache Python pour les endpoints
 │   │   └── chat.py         # Endpoint pour les fonctionnalités de chat
 │   └── router.py           # Router principal regroupant tous les endpoints
 ├── core/                   # Configuration et éléments centraux de l'application
-│   ├── __pycache__/        # Cache Python pour les fichiers de configuration
 │   └── config.py           # Fichier de configuration principal
 ├── models/                 # Modèles de données Pydantic
-│   ├── __pycache__/        # Cache Python pour les modèles
 │   ├── chat.py             # Modèle pour les requêtes/réponses de chat
 │   └── conversation.py     # Modèle pour la gestion des conversations
 ├── services/               # Services métier
-│   ├── __pycache__/        # Cache Python pour les services
 │   ├── chain.py            # Gestion des chaînes d'exécution pour LangChain
 │   ├── llm_service.py      # Service d'interaction avec le LLM (LangChain)
 │   ├── memory.py           # Service pour la gestion de la mémoire contextuelle
@@ -112,3 +108,128 @@ Créer un fichier `.env` à la racine du projet :
 ```
 OPENAI_API_KEY=votre-clé-api-openai
 ```
+
+
+## Explication des Composants
+
+### 1. Main Application (`main.py`)
+```python
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+```
+- Point d'entrée de l'application
+- Configure FastAPI et les middlewares
+- Initialise les routes
+
+### 2. Modèles (`models/chat.py`)
+```python
+class ChatRequest(BaseModel):
+    message: str
+```
+- Définit la structure des données entrantes/sortantes
+- Utilise Pydantic pour la validation des données
+- Version simple pour débuter, extensible pour le contexte
+
+### 3. Service LLM (`services/llm_service.py`)
+```python
+class LLMService:
+    def __init__(self):
+        self.llm = ChatOpenAI(...)
+```
+- Gère l'interaction avec le modèle de langage
+- Configure le client OpenAI
+- Traite les messages et le contexte
+
+### 4. Router API (`api/router.py`)
+```python
+@router.post("/chat")
+async def chat(request: ChatRequest) -> ChatResponse:
+```
+- Définit les endpoints de l'API
+- Gère les requêtes HTTP
+- Valide les données entrantes
+
+## Utilisation de l'API
+
+### Version Simple
+```bash
+curl -X 'POST' \
+  'http://localhost:8000/chat/simple' \
+  -H 'Content-Type: application/json' \
+  -d '{"message": "Bonjour!"}'
+```
+
+### Version avec Contexte
+```bash
+curl -X 'POST' \
+  'http://localhost:8000/chat/with-context' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "message": "Bonjour!",
+    "context": [
+      {"role": "user", "content": "Comment vas-tu?"},
+      {"role": "assistant", "content": "Je vais bien, merci!"}
+    ]
+  }'
+```
+
+## Debugging avec VS Code
+
+1. Ouvrir le projet dans VS Code
+2. Aller dans la section "Run and Debug" (Ctrl + Shift + D)
+3. Sélectionner la configuration "Python: FastAPI"
+4. Appuyer sur F5 ou cliquer sur le bouton Play
+5. Démarrer Swagger : http://127.0.0.1:8000/docs
+
+## Structure de l'API
+
+### Endpoints Disponibles
+
+- `/chat/simple` : Version basique sans contexte
+- `/chat/with-context` : Version avancée avec gestion du contexte
+
+### Flux de Données
+
+1. La requête arrive sur l'endpoint
+2. Les modèles Pydantic valident les données
+3. Le service LLM traite la demande
+4. La réponse est formatée et renvoyée
+
+## Progression Pédagogique
+
+1. **Démarrer avec la version simple**
+   - Comprendre la structure de base
+   - Tester les appels API simples
+
+2. **Évoluer vers la version avec contexte**
+   - Ajouter la gestion de l'historique
+   - Comprendre l'importance du contexte dans les LLM
+
+3. **Explorer les fonctionnalités avancées**
+   - Implémenter des prompts personnalisés
+   - Gérer différents types de réponses
+
+## Dépannage
+
+### Problèmes Courants
+
+1. **Erreur de clé API**
+   - Vérifier le fichier `.env`
+   - S'assurer que la clé est valide
+
+2. **Erreurs de dépendances**
+   - Vérifier l'activation du venv
+   - Réinstaller les requirements
+
+3. **Erreurs de contexte**
+   - Vérifier le format du contexte
+   - S'assurer que les rôles sont valides
+
+4. **Powershell**
+   - Si les droits admin ne sont pas présent : ''Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force''
+
+## Ressources
+
+- [Documentation FastAPI](https://fastapi.tiangolo.com/)
+- [Documentation LangChain](https://python.langchain.com/)
+- [API OpenAI](https://platform.openai.com/docs/api-reference)
