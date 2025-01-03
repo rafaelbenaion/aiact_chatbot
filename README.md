@@ -1,4 +1,4 @@
-# AIAct Compliance Chatbot
+# AI Act Compliance Chatbot
 
 ## Project Overview
 
@@ -35,6 +35,7 @@ This endpoint accepts project descriptions and provides detailed guidance on com
   "max_length": 10000
 }
 
+```
 
 ## Structure du Projet
 
@@ -65,7 +66,6 @@ app/
 .env.template               # Modèle du fichier d'environnement
 .gitignore                  # Fichier pour ignorer certains fichiers/dossiers dans Git
 README.md                   # Documentation principale du projet
-
 ```
 
 ## Installation et Configuration
