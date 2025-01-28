@@ -1,5 +1,10 @@
 # AI Act Compliance Chatbot
 
+![Image 1](streamlit/image1.png)
+![Image 2](streamlit/image2.png)
+![Image 3](streamlit/image3.png)
+![Image 4](streamlit/image4.png)
+
 ## Project Overview
 
 AI Act Compliance Chatbot is a tool designed to help startups and AI developers align their projects with the European Union's AI Act regulations. This chatbot provides tailored guidance on legislation compliance, leveraging the latest legal texts and project descriptions provided by users. It evaluates whether an AI project is likely to comply with EU regulations and flags any potential issues related to the use of banned AI applications.
@@ -14,8 +19,9 @@ The primary objectives of this chatbot are:
 
 - **FastAPI**: Backend framework for API endpoints and logic.
 - **LangChain**: Powers chatbot interactions and vectorization for enhanced AI processing.
-- **React**: Provides a dynamic and user-friendly frontend interface.
+- **Streamlit**: Lightweight, dynamic and user-friendly frontend interface.
 - **MongoDB**: Manages project data and user interaction history for efficient storage.
+
 
 ---
 
