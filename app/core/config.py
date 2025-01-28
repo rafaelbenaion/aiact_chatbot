@@ -29,6 +29,6 @@ load_dotenv()
 # ----------------------------------------------------------------------------------------------- #
 
 class Config:
-    MONGO_URI       = os.getenv("MONGO_URI", os.getenv("MONGODB_URI"))  # URI de connex par défaut
+    MONGO_URI       = "mongodb+srv://admin:rafalindo@waterbnb.lo1mkvx.mongodb.net/?retryWrites=true&w=majority&appName=WaterBnb"  # URI de connex par défaut"
     MONGO_DB        = os.getenv("MONGO_DB", "chatbot")                  # Nom de base par défaut
     COLLECTION_NAME = os.getenv("COLLECTION_NAME", "conversations")     # Nom de base par défaut

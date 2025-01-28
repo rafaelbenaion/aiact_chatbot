@@ -6,7 +6,7 @@ import  os
 # Connect to MongoDB Atlas cluster
 # ----------------------------------------------------------------------------------------------- #
 
-MONGO_URI   = os.environ.get("MONGODB_URI")
+MONGO_URI   = 'mongodb+srv://admin:rafalindo@waterbnb.lo1mkvx.mongodb.net/?retryWrites=true&w=majority&appName=WaterBnb'
 client      = MongoClient(MONGO_URI)
 
 # ----------------------------------------------------------------------------------------------- #
@@ -34,7 +34,7 @@ def search_and_combine_text(query):
             }
         },
         {
-            "$limit": 2  # number of pages of the aiact we want to fetch
+            "$limit": 3  # number of pages of the aiact we want to fetch
         }
     ]
     
