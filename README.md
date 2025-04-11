@@ -1,7 +1,7 @@
 # AI Act Compliance Chatbot
 
-Demo PoC Smiling AI : [https://vimeo.com/1071250322](https://vimeo.com/1071250322?share=copy)
-Video Marketing Smiling AI : [https://vimeo.com/1050775660](https://vimeo.com/1050775660?share=copy#t=0)
+##### Demo PoC Smiling AI : [https://vimeo.com/1071250322](https://vimeo.com/1071250322?share=copy)
+##### Video Marketing Smiling AI : [https://vimeo.com/1050775660](https://vimeo.com/1050775660?share=copy#t=0)
 
 ![Image 1](streamlit/image1.png)
 ![Image 2](streamlit/image2.png)
